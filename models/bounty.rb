@@ -76,8 +76,10 @@ class Bounty
     db.prepare("find_by_id", sql)
     result = db.exec_prepared("find_by_id", values)
     db.close()
-    if result.count >= 1
+    if result.count == 1
       return Bounty.new(result[0])
+    else
+      return nil
     end
   end
 end
