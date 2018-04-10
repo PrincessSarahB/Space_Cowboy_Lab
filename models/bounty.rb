@@ -23,12 +23,21 @@ end
 
 def delete()
   db = PG.connect({dbname: "space_cowboys", host: "localhost"})
-  sql = "DELETE FROM space_cowboys_bountY WHERE ID = $1"
+  sql = "DELETE FROM space_cowboys_bounty WHERE ID = $1"
   values = [@id]
   db.prepare("delete", sql)
   db.exec_prepared("delete", values)
   db.close()
 end
+
+def update()
+  db = PG.connect({dbname: "space_cowboys", host: "localhost"})
+  sql = "UPDATE space_cowboys_bounty SET (name, danger_level, bounty_value, homeworld) = ($1, $2, $3, $4) WHERE id = $5;"
+  values = [@name, @danger_level, @bounty_value, @homeworld, @id]
+  db.prepare("update", sql)
+  db.exec_prepared("update", values)
+  db.close()
+end 
 
 
 def self.all()
