@@ -37,7 +37,7 @@ def update()
   db.prepare("update", sql)
   db.exec_prepared("update", values)
   db.close()
-end 
+end
 
 
 def self.all()
@@ -58,4 +58,26 @@ db.close()
 
 end
 
+def self.find_by_name(name)
+  db = PG.connect({dbname: "space_cowboys", host: "localhost"})
+  sql = "SELECT * FROM space_cowboys_bounty WHERE name = $1;"
+values = [name]
+  db.prepare("find_by_name", sql)
+result = db.exec_prepared("find_by_name", values)
+db.close()
+# @name = name[0]["name"]
+# return result.map {|result| Bounty.new(result)}
+return Bounty.new(result[0])
+
+end
+
+def self.find_by_id(id)
+  db = PG.connect({dbname: "space_cowboys", host: "localhost"})
+  sql = "SELECT * FROM space_cowboys_bounty WHERE id = $1;"
+values = [id]
+db.prepare("find_by_id", sql)
+result = db.exec_prepared("find_by_id", values)
+db.close()
+return result []
+end
 end
