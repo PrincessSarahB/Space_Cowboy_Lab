@@ -65,8 +65,6 @@ values = [name]
   db.prepare("find_by_name", sql)
 result = db.exec_prepared("find_by_name", values)
 db.close()
-# @name = name[0]["name"]
-# return result.map {|result| Bounty.new(result)}
 return Bounty.new(result[0])
 
 end
@@ -78,6 +76,9 @@ values = [id]
 db.prepare("find_by_id", sql)
 result = db.exec_prepared("find_by_id", values)
 db.close()
-return result []
+
+if result.count >= 1
+  return Bounty.new(result[0])
+end
 end
 end
