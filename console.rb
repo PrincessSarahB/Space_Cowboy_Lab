@@ -10,17 +10,17 @@ bounty1 = Bounty.new({
   "homeworld" => "Shadow"
   })
 
-bounty1.save()
+  bounty1.save()
 
-bounty2 = Bounty.new({
-  "name" => "River Tam",
-  "danger_level" => "ermagerdyerderd",
-  "bounty_value" => 50000,
-  "homeworld" => "Osiris"
-  })
+  bounty2 = Bounty.new({
+    "name" => "River Tam",
+    "danger_level" => "ermagerdyerderd",
+    "bounty_value" => 50000,
+    "homeworld" => "Osiris"
+    })
 
-bounty2.save()
+    bounty2.save()
 
-binding.pry
+    binding.pry
 
-nil
+    nil
